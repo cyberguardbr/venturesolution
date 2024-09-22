@@ -1,6 +1,5 @@
 #!/bin/bash
-#cp /usr/share/zoneinfo/Asia/Dubai /etc/localtime
-cp /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime
+cp /usr/share/zoneinfo/Asia/Dubai /etc/localtime
 #Database Details
 HOST='162.250.126.19';
 USER='ventures_VentureSolution';
