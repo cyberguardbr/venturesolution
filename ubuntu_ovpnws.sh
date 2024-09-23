@@ -255,18 +255,21 @@ acl Safe_ports port 280
 acl Safe_ports port 488
 acl Safe_ports port 591
 acl Safe_ports port 777
-acl CONNECT method CONNECT
+acl CONNECT method CONNECT OPTIONS POST GET PUT TRACE DELETE HEAD PATCH PROPATCH
 http_access allow SSH
 http_access deny manager
 http_access deny all
-http_port 8080
 http_port 3128
+http_port 9200
+http_port 9201
+http_port 9202
+http_port 8799
 coredump_dir /var/spool/squid3
 refresh_pattern ^ftp: 1440 20% 10080
 refresh_pattern ^gopher: 1440 0% 1440
 refresh_pattern -i (/cgi-bin/|\?) 0 0% 0
 refresh_pattern . 0 20% 4320
-visible_hostname Firenet-Proxy
+visible_hostname VENTURESOLUTION.MYVNC.COM
 error_directory /usr/share/squid3/errors/English"| sudo tee /etc/squid3/squid.conf
 sudo service squid3 restart
 } &>/dev/null
@@ -284,11 +287,11 @@ mkdir -p /var/www/html/stat
 touch /etc/openvpn/server.conf
 touch /etc/openvpn/server2.conf
 
-echo 'DNS=1.1.1.1
+echo 'DNS=8.8.8.8
 DNSStubListener=no' >> /etc/systemd/resolved.conf
 sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
-echo '# Openvpn Configuration by Firenet Philippines :)
+echo '# Openvpn Configuration by VENTURESOLUTION.MYVNC.COM | @FERNANDOANGELI For Brazil :)
 dev tun
 port 53
 proto udp
@@ -299,7 +302,7 @@ cert /etc/openvpn/easy-rsa/keys/server.crt
 key /etc/openvpn/easy-rsa/keys/server.key 
 dh none
 tls-server
-tls-version-min 1.2
+tls-version-min 1.1
 tls-cipher TLS-ECDHE-RSA-WITH-AES-128-GCM-SHA256
 cipher none
 ncp-disable
@@ -333,9 +336,9 @@ log /etc/openvpn/server/udpserver.log
 status /etc/openvpn/server/udpclient.log
 verb 3' > /etc/openvpn/server.conf
 
-echo '# Openvpn Configuration by Firenet Philippines :)
+echo '# Openvpn Configuration by VENTURESOLUTION.MYVNC.COM | @FERNANDOANGELI For Brazil :)
 dev tun
-port 1194
+port 9203
 proto tcp
 topology subnet
 server 10.20.0.0 255.255.252.0
@@ -599,7 +602,7 @@ output = /tmp/stunnel.log
 cert = /etc/stunnel/stunnel.pem
 
 [openvpn-tcp]
-connect = 1194  
+connect = 9203  
 accept = 443 
 
 [openvpn-udp]
@@ -701,20 +704,24 @@ exit 0" >> /etc/rc.local
 install_done()
 {
   clear
-  echo "OPENVPN SERVER FIRENET"
+  echo "OPENVPN SERVER VENTURESOLUTION.MYVNC.COM | @FERNANDOANGELI For Brazil :)"
   echo "IP : $(curl -s https://api.ipify.org)"
-  echo "OPENVPN TCP port : 1194"
+  echo "OPENVPN TCP port : 9203"
   echo "OPENVPN UDP port : 53"
   echo "OPENVPN SSL port : 443"
   echo "SOCKS port : 80"
+  echo "SOCKS port : 8080"
   echo "PROXY port : 3128"
-  echo "PROXY port : 8080"
+  echo "PROXY port : 9200"
+  echo "PROXY port : 9201"
+  echo "PROXY port : 9202"
+  echo "PROXY port : 9877"
   echo
   echo
   history -c;
   rm /root/.installer
-  echo "Server will secure this server and reboot after 20 seconds"
-  sleep 20
+  echo "Server will secure this server and reboot after 6 seconds"
+  sleep 6
   reboot
 }
 
