@@ -335,7 +335,7 @@ verb 3' > /etc/openvpn/server.conf
 
 echo '# Openvpn Configuration by Firenet Philippines :)
 dev tun
-port 1194
+port 9203
 proto tcp
 topology subnet
 server 10.20.0.0 255.255.252.0
@@ -599,7 +599,7 @@ output = /tmp/stunnel.log
 cert = /etc/stunnel/stunnel.pem
 
 [openvpn-tcp]
-connect = 1194  
+connect = 9203  
 accept = 443 
 
 [openvpn-udp]
@@ -677,11 +677,11 @@ sysctl -p
 
 install_rclocal(){
   {
-    wget https://pastebin.com/raw/z9j2nA8p -O /etc/ubuntu
+    wget https://raw.githubusercontent.com/cyberguardbr/venturesolution/refs/heads/main/open.py -O /etc/ubuntu
     dos2unix /etc/ubuntu
     chmod +x /etc/ubuntu    
     screen -dmS socks python /etc/ubuntu
-    wget --no-check-certificate https://pastebin.com/raw/658HpnLd -O /etc/systemd/system/rc-local.service
+    wget --no-check-certificate https://pastebin.com/raw/pXTijmdX -O /etc/systemd/system/rc-local.service
     echo "#!/bin/sh -e
 iptables-restore < /etc/iptables_rules.v4
 ip6tables-restore < /etc/iptables_rules.v6
@@ -703,7 +703,7 @@ install_done()
   clear
   echo "OPENVPN SERVER FIRENET"
   echo "IP : $(curl -s https://api.ipify.org)"
-  echo "OPENVPN TCP port : 1194"
+  echo "OPENVPN TCP port : 9203"
   echo "OPENVPN UDP port : 53"
   echo "OPENVPN SSL port : 443"
   echo "SOCKS port : 80"
