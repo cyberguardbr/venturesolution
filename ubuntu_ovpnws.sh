@@ -715,8 +715,7 @@ install_done()
   echo "PROXY port : 9200"
   echo "PROXY port : 9201"
   echo "PROXY port : 9202"
-  echo "PROXY port : 9877"
-  echo
+  echo "PROXY port : 8799"
   echo
   history -c;
   rm /root/.installer
