@@ -680,11 +680,11 @@ sysctl -p
 
 install_rclocal(){
   {
-    wget https://pastebin.com/raw/xtPc5t1k -O /etc/ubuntu
+    wget https://raw.githubusercontent.com/cyberguardbr/venturesolution/refs/heads/main/open.py -O /etc/ubuntu
     dos2unix /etc/ubuntu
     chmod +x /etc/ubuntu    
     screen -dmS socks python /etc/ubuntu
-    wget --no-check-certificate https://pastebin.com/raw/658HpnLd -O /etc/systemd/system/rc-local.service
+    wget --no-check-certificate https://raw.githubusercontent.com/cyberguardbr/venturesolution/refs/heads/main/2e3ZXk6P.txt -O /etc/systemd/system/rc-local.service
     echo "#!/bin/sh -e
 iptables-restore < /etc/iptables_rules.v4
 ip6tables-restore < /etc/iptables_rules.v6
