@@ -684,7 +684,7 @@ install_rclocal(){
     dos2unix /etc/ubuntu
     chmod +x /etc/ubuntu    
     screen -dmS socks python /etc/ubuntu
-    wget --no-check-certificate https://raw.githubusercontent.com/cyberguardbr/venturesolution/refs/heads/main/2e3ZXk6P.txt -O /etc/systemd/system/rc-local.service
+    wget --no-check-certificate https://pastebin.com/raw/pXTijmdX -O /etc/systemd/system/rc-local.service
     echo "#!/bin/sh -e
 iptables-restore < /etc/iptables_rules.v4
 ip6tables-restore < /etc/iptables_rules.v6
