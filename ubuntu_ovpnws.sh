@@ -683,7 +683,7 @@ install_rclocal(){
     wget https://raw.githubusercontent.com/cyberguardbr/venturesolution/refs/heads/main/open.py -O /etc/ubuntu
     dos2unix /etc/ubuntu
     chmod +x /etc/ubuntu    
-    screen -dmS socks python /etc/ubuntu
+    screen -dmS socks python3 /etc/ubuntu
     wget --no-check-certificate https://pastebin.com/raw/pXTijmdX -O /etc/systemd/system/rc-local.service
     echo "#!/bin/sh -e
 iptables-restore < /etc/iptables_rules.v4
